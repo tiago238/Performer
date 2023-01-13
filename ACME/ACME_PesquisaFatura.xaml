@@ -1,7 +1,8 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="ACME_PesquisaFatura" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="str_InvoiceNumber" Type="InArgument(x:String)" />
+    <x:Property Name="in_InvoiceNumber" Type="InArgument(x:String)" />
   </x:Members>
+  <sap:VirtualizedContainerService.HintSize>834,790</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="52">
@@ -33,6 +34,7 @@
       <x:String>System.Net.Mail</x:String>
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -91,19 +93,19 @@
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: ACME System 1 - Search" sap:VirtualizedContainerService.HintSize="431,53" sap2010:WorkflowViewState.IdRef="NApplicationCard_5" InteractionMode="DebuggerApi" OpenMode="[NAppOpenMode.Never]" ScopeGuid="e3bf5c03-45df-4736-ab69-fe8e64bdf336" Version="V2">
+  <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: ACME System 1 - Search" sap:VirtualizedContainerService.HintSize="434,725" sap2010:WorkflowViewState.IdRef="NApplicationCard_5" InteractionMode="DebuggerApi" OpenMode="[NAppOpenMode.Never]" ScopeGuid="e3bf5c03-45df-4736-ab69-fe8e64bdf336" Version="V2">
     <uix:NApplicationCard.Body>
       <ActivityAction x:TypeArguments="x:Object">
         <ActivityAction.Argument>
           <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
         </ActivityAction.Argument>
-        <Sequence DisplayName="Fazer" sap:VirtualizedContainerService.HintSize="400,509" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence DisplayName="Fazer" sap:VirtualizedContainerService.HintSize="400,508" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Invoice Number'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="358,219" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="e3bf5c03-45df-4736-ab69-fe8e64bdf336" Text="[str_InvoiceNumber]" Version="V3">
+          <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Invoice Number'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="358,218" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="e3bf5c03-45df-4736-ab69-fe8e64bdf336" Text="[in_InvoiceNumber]" Version="V3">
             <uix:NTypeInto.Target>
               <uix:TargetAnchorable BrowserURL="https://acme-test.uipath.com/invoices/search" DesignTimeRectangle="183, 506, 485, 34" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT invoiceNumber'" FullSelectorArgument="&lt;webctrl id='invoiceNumber' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='invoiceNumber' tag='INPUT' type='text' class='form-control' aaname='' /&gt;" Guid="aa7e9cf0-e0b6-4d3f-9e83-6dc77687ffd1" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAekAAAAmCAYAAADgB2NCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGCSURBVHhe7dgxisJQGIXR2f/aJCtIaaEgIkJAJeYNd0iCFlMa/+IcuEVeXv+R/DQAoCSRBoCi3iI9DEPr+751Xdd2u52ZmZltsHQ3/U2HX62Rzotc2u/37XQ6tfP5bGZmZhss3U1/0+HXUK+RTsFz4Xq9tvv93p7Pp5mZmW2wdDf9TYfT48Ua6dT7crm0cRzbNE3zKQDwaelu+psOp8eLNdL5J3673QQaAL4g/U2H0+PFW6TzyQ0AfEc6LNIAUJBIA0BRIg0ARYk0ABQl0gBQlEgDQFEiDQBFiTQAFCXSAFCUSANAUSINAEWJNAAUJdIAUJRIA0BRIg0ARYk0ABQl0gBQlEgDQFEiDQBFiTQAFCXSAFCUSANAUSINAEWJNAAU9W+ku65rj8djfgIAtpYOp8eLNdJ937fD4dCmaZpPAICtpL/pcHq8WCM9DMNfvY/HYxvHcT4FAD4t3U1/0+H0eLFGOvIiBc+l/BM3MzOzzy/dTX9fAx1vkQYA6hBpACiptV86OHKi1C+BXwAAAABJRU5ErkJggg==" InformativeScreenshot="5b0b9306281c97e472a0660cd2d4030b.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1 - Search' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive">
                 <uix:TargetAnchorable.Anchors>
